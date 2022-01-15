@@ -29,15 +29,21 @@ public class EmployeeUiController {
 			System.out.println("Enter an employee salery");
 			double salery = sc.nextDouble();
 			Employee employee = new Employee(id, name, salery);
-			employeeStorage.save(employee);
+			try {
+				employeeStorage.save(employee);
+			} catch (EmployeeNotFoundException e2) {
+			System.out.println("Employee already Exist");
+			}finally {
+				chooseEmployeeAction(sc, employeeStorage);
+			}
 			break;
 		case 2:
 			System.out.println("Enter an employee id to find");
 			int empId = sc.nextInt();
 			try {
 				Employee employee2 = employeeStorage.findEmployee(empId);
-				System.out.println("Name : " + employee2.getName() + "employee id " + employee2.getId()
-						+ "Employee salery" + employee2.getSalery());
+				System.out.println("Name: " + employee2.getName() + "|| employee id:" + employee2.getId()
+						+ "|| Employee salery:" + employee2.getSalery());
 			} catch (EmployeeNotFoundException e) {
 				e.printStackTrace();
 			} finally {

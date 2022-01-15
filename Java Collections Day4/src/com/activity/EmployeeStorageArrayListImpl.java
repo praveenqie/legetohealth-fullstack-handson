@@ -9,12 +9,12 @@ public class EmployeeStorageArrayListImpl implements EmployeeStorage {
 	List<Employee> employees = new ArrayList<Employee>();
 
 	@Override
-	public int save(Employee employee) {
+	public int save(Employee employee) throws EmployeeNotFoundException {
 		System.out.println("--------------------------ArrayList collection calling--------------------------");
 		if (!Objects.isNull(employees)) {
 			for (Employee employee2 : employees)
 				if (employee2.getId() == employee.getId())
-					return -1;
+				throw new EmployeeNotFoundException("Employee already exist");
 		}
 		employees.add(employee);
 		return employee.getId();

@@ -2,7 +2,7 @@ package com.activity;
 
 public interface EmployeeStorage {
 
-	public int save(Employee employee);
+	public int save(Employee employee) throws EmployeeNotFoundException;
 
 	public Employee findEmployee(int id) throws EmployeeNotFoundException;
 
