@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id='pid' onclick="testOnlick()" style="color: purple;"> My first page</p>
+    <script type="text/javascript">
+        var count =0;
+        
+        function testOnlick(){
+            if(count>2){
+                count=0;
+            }
+            var colors = ['red','green','blue'];
+            var x = document.getElementById('pid');
+            x.style.color=colors[count++];
+        }
+        testOnlick()
+     </script>
+</body>
+</html>
