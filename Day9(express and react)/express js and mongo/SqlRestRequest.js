@@ -3,6 +3,7 @@ let port = 9090;
 let bodyParser = require('body-parser');
 
 
+
 let mysql = require('mysql');
 let connection = mysql.createConnection({
   host: 'localhost',
@@ -19,23 +20,38 @@ connection.connect(function(err) {
 app.use([bodyParser.text()],bodyParser.json());
 
 app.get('/employee/:id',(request,response)=>{
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'legato_db'
+  });
     let id = parseInt(request.params.id);
     console.log(`id is ${id}`)
+   
     connection.query(`select * from employee where id=${id}`,function (err, result) {
         if (err) throw err;
         console.log(result);
         response.json(result);
       });
-   
+      connection.end();
+    
 });
 
 app.get('/employee',(request,response)=>{
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'legato_db'
+  });
     connection.query(`select * from employee`,function (err, result) {
         if (err) throw err;
         console.log(result);
         response.json(result);
+        connection.end();
       });
-   
+    connection.end();
 });
 
 
@@ -62,8 +78,7 @@ app.post('/employee',(request,response)=>{
         console.log(result);
         response.json(result);
       });
+    
 });
-
 app.listen(port, ()=> console.log(`listining to ${port}`));
-
 
