@@ -1,0 +1,12 @@
+<p>event-binding works!</p>
+
+<div class="container">
+    <h2>Here is the Username</h2>
+    <h4>NAME: {{userName}}</h4>
+    <button type="submit" class="btn btn-info"  (click)="handleClick()">Change 
+        Name</button>
+        <br>
+    <input type="text" #un>
+    <button type="submit" class="btn btn-success" (click)="handleNames(un.value)">insert name</button>
+
+</div>

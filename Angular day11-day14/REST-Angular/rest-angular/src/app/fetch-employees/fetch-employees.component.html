@@ -1,0 +1,24 @@
+<div class="container">
+  <form [formGroup]='employee' (ngSubmit)='handleClick()'>
+    <input type="submit" value="Refresh" class="btn btn-info">
+  </form>
+  <table class="table table-hover table-dark table-borderd">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>SALARY</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let e of emp'>
+        <td>{{e.id}}</td>
+        <td>{{e.name}}</td>
+        <td>{{e.salary}}</td>
+        <td> <app-remove-employee [employee]="e" onPass='handleClick'></app-remove-employee></td>
+       
+      </tr>
+    </tbody>
+  </table>
+</div>
