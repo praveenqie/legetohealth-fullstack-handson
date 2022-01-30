@@ -1,0 +1,61 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h1 style="color: aliceblue;">Employee Information</h1>
+        <div class="d-flex">
+            <button type="button" (click)="onAddEmployee()" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">Add
+                Employee</button>
+        </div>
+    </div>
+</nav>
+<table class="table table-hover table-borderd mt-4">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">SALARY</th>
+            <th scope="col">ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of employeeData">
+            <td>{{e.id}}</td>
+            <td>{{e.name}}</td>
+            <td>{{e.salary}}</td>
+            <td>
+                <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onEditEmployee(e)">EDIT</button>
+                <button class="btn btn-danger mx-3" (click)="removeEmployee(e)">DELETE</button>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formGroupValue">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Employee Name</label>
+                        <input type="text" class="form-control" formControlName="name" id="name" autocomplete="off">
+                        
+                    </div>
+                     <div class="mb-3">
+                        <label for="salary" class="form-label">Salary</label>
+                        <input type="text" class="form-control" formControlName="salary" id="salary" autocomplete="off">
+                    </div>
+                    
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancel" data-bs-dismiss="modal">Cancel</button>
+                <button *ngIf="showAdd" type="button" class="btn btn-primary" (click)="postEmployeeDetails()">ADD</button>
+                <button *ngIf="showUpdate" type="button" class="btn btn-primary" (click)="updateEmployeeDetails()">UPDATE</button>
+            </div>
+        </div>
+    </div>
+</div>

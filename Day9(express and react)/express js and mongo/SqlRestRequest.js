@@ -72,5 +72,23 @@ app.post('/employee',(request,response)=>{
       });
     
 });
+
+app.put('/employee',(request,response)=>{
+  console.log(request.body);
+ 
+  let requestBody = request.body;
+  let id = requestBody['id'];
+  let name = requestBody['name'];
+  let salary = requestBody['salary'];
+  console.log(`name = ${name} and salary = ${salary}`);
+  //var sql = "UPDATE TABLE employee SET name =? , salary =?  WHERE employee_id = ?";
+  connection.query(`UPDATE employee SET name = "${name}" , salary=${salary} WHERE id=${id}`,
+  function (err, result) {
+      if (err) throw err;
+      console.log(result);
+      response.json('employee stored successfully');
+    });
+  
+});
 app.listen(port, ()=> console.log(`listining to ${port}`));
 

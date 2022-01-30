@@ -7,7 +7,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { FetchEmployeesComponent } from './fetch-employees/fetch-employees.component';
 import { StoreEmployeesComponent } from './store-employees/store-employees.component';
 import { RemoveEmployeeComponent } from './remove-employee/remove-employee.component';
-import { SearchEmployeeComponent } from './search-employee/search-employee.component'
+import { SearchEmployeeComponent } from './search-employee/search-employee.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { SearchEmployeeComponent } from './search-employee/search-employee.compo
     SearchEmployeeComponent
   ],
   imports: [
-    BrowserModule,FormsModule,ReactiveFormsModule,HttpClientModule
+    BrowserModule,FormsModule,ReactiveFormsModule,HttpClientModule, NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

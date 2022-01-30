@@ -1,35 +1,50 @@
-<div class="container">
+<button class="btn btn-md btn-outline-primary" (click)="open(content)">
+    ADD EMPLOYEE
+</button>
+
+
+
+<ng-template #content let-modal>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <h4 class="modal-title pt-3" id="modal-basic-title">
+                EMPLOYEE INFORMATION
+            </h4>
+        </div>
+        <div class="col-1 pt-4">
+            <button type="button" class="close ml-5" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">
+                    X
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="modal-body">
         <form [formGroup]="employee" (ngSubmit)="onClickSubmit(employee.value)" class="form-inline">
-           
-            <div class="row p-6">
-               
-                <div class="form-group col-4">
-                    
-                    <input type="text" class="form-control" autocomplete="off" placeholder="Employee Name" formControlName="name">
+            <div class="form-group row p-3">
+
+                <input type="text" class="form-control" autocomplete="off" placeholder="Employee Name"
+                    formControlName="name">
+            </div>
+            <div class="form-group row p-3">
+                <input type="number" class="form-control" autocomplete="off" placeholder="Employee Salary"
+                    formControlName="salary">
+            </div>
+
+            <div class="row">
+                <div class="col-6 p-3">
+                    <input type="submit" value="save" class="form-control btn btn-info" autocomplete="off" >
                 </div>
-                <div class="form-group col-4">
-                    <input type="number" class="form-control" autocomplete="off" placeholder="Employee Salary" formControlName="salary">
-                </div>
-                <div class="form-group col-4">
-                    <input type="submit" value = "save" class="form-control btn btn-info" autocomplete="off" >
+                <div class="col-6 p-3">
+                    <button type="button" class="form-control btn btn-danger" (click)="modal.close('close click')">
+                        close
+                    </button>
                 </div>
             </div>
-            </form>
-            <!-- <div class="row"  *ngIf="success">
-                <div class="col-xs-12">
-                    <div class="alert alert-info"> 
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 
-                        <strong>Info!</strong> Employee stored successfully!
-                      </div>
-                </div>
-              </div>
-            
-          </form>
-          <div *ngIf="success" class="alert alert-success">
-          
-              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-              <strong>Success!</strong> Bootstrap applied to alert.
-            </div> -->
-</div>
+        </form>
+    </div>
 
+
+</ng-template>

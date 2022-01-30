@@ -1,18 +1,17 @@
-<div class="container">
-    <form [formGroup]='employee' class="form-inline" (ngSubmit)="handclick()">
-        <div class="row mt-5 ">
-            <div class="form-group col-3 mt-5">
-            </div>
-            <div class="form-group col-3">
+<form [formGroup]='employee' class="form-inline" (ngSubmit)="handclick()">
+    
+       <div class="row">
+           <div class="col-9 form-group">
                 <input type="text" class="form-control" autocomplete="off" placeholder="Enter employee id to search"
                     formControlName="id">
             </div>
             <div class="form-group col-3">
-                <input type="submit" value="Search" class="form-control btn btn-primary">
+                <input type="submit" value="Search" class="form-control btn-outline-primary">
             </div>
-            <!-- <div *ngIf='isSuccess'>
+       </div>
+       
+     
+        <!-- <div *ngIf='isSuccess'>
                 <app-fetch-employees></app-fetch-employees>
             </div> -->
-        </div>
     </form>
-</div>
