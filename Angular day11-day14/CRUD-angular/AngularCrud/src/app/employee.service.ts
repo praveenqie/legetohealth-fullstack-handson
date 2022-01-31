@@ -17,7 +17,7 @@ export class EmployeeServiceService {
 
   storeEmployees(emp:any):Observable<any>{
 
-    console.log(emp);
+    console.log(`post data${emp}`);
     let url = `${this.baseUrl}/employee`;
     return this._client.post(url,emp);
   }

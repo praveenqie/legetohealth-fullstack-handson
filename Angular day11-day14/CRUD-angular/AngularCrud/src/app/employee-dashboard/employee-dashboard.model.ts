@@ -1,5 +1,8 @@
 export class EmployeeModel{
-    id:number=0;
-    name:string='';
-    salary:string='';
+    EmployeeID:number=0;
+    FirstName:string='';
+    LastName:string='';
+    Age:string='';
+    Salary:string='';
+    City:string='';
 }
