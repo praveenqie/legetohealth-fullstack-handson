@@ -14,14 +14,14 @@ export class EmployeeDashboardComponent implements OnInit {
   formGroupValue !: FormGroup;
   employeeModel: EmployeeModel = new EmployeeModel();
   employeeData: any;
-  showAdd !:boolean;
-  showUpdate !:boolean;
+  showAdd !: boolean;
+  showUpdate !: boolean;
   constructor(private builder: FormBuilder, private service: EmployeeServiceService) { }
 
   ngOnInit(): void {
 
     this.formGroupValue = this.builder.group({
-      EmployeeID:[''],
+      EmployeeID: [''],
       FirstName: [''],
       LastName: [''],
       Age: [''],
@@ -36,7 +36,7 @@ export class EmployeeDashboardComponent implements OnInit {
     this.employeeModel.Age = this.formGroupValue.value.Age;
     this.employeeModel.Salary = this.formGroupValue.value.Salary;
     this.employeeModel.City = this.formGroupValue.value.City;
-    console.log(`This is post data name ${ this.employeeModel.FirstName}`)
+    console.log(`This is post data name ${this.employeeModel.FirstName}`)
     this.service.storeEmployees(this.employeeModel).subscribe(response => {
       console.log(response);
       alert("Employee added succesfully!")
@@ -59,24 +59,24 @@ export class EmployeeDashboardComponent implements OnInit {
     });
 
   }
-  removeEmployee(employee:any):void{
-    this.service.removeEmployee(employee.EmployeeID).subscribe(response=>{
+  removeEmployee(employee: any): void {
+    this.service.removeEmployee(employee.EmployeeID).subscribe(response => {
       console.log(response);
       alert("Employee deleted successfully ");
       this.getAllEmployess();
-    },err =>{
+    }, err => {
       console.log(err);
     })
   }
-  onAddEmployee(){
+  onAddEmployee() {
     this.formGroupValue.reset();
     this.showAdd = true;
-    this.showUpdate=false;
+    this.showUpdate = false;
 
   }
-  onEditEmployee(employee:any){
+  onEditEmployee(employee: any) {
     this.showAdd = false;
-    this.showUpdate=true;
+    this.showUpdate = true;
     this.employeeModel.EmployeeID = employee.EmployeeID;
     this.formGroupValue.controls['FirstName'].setValue(employee.FirstName);
     this.formGroupValue.controls['LastName'].setValue(employee.LastName);
@@ -84,8 +84,8 @@ export class EmployeeDashboardComponent implements OnInit {
     this.formGroupValue.controls['Salary'].setValue(employee.Salary);
     this.formGroupValue.controls['City'].setValue(employee.City);
   }
-  updateEmployeeDetails(){
-  
+  updateEmployeeDetails() {
+
     this.employeeModel.FirstName = this.formGroupValue.value.FirstName;
     this.employeeModel.LastName = this.formGroupValue.value.LastName;
     this.employeeModel.Age = this.formGroupValue.value.Age;
@@ -104,13 +104,13 @@ export class EmployeeDashboardComponent implements OnInit {
       alert("Something went wrong")
     });
   }
-  searchEmployee(){
-    this.service.searchEmployee( this.formGroupValue.value.EmployeeID).subscribe(response=>{
+  searchEmployee() {
+    this.service.searchEmployee(this.formGroupValue.value.EmployeeID).subscribe(response => {
       console.log(response);
       this.employeeData = response;
-     
-      },error=>{
-        console.log(error);
-      })
+
+    }, error => {
+      console.log(error);
+    })
   }
 }
