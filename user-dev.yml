@@ -1,2 +1,12 @@
 user:
-  name: praveen kumar
+  name: praveen kumar git properties getting here
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/legato_db?autoreconnect = true
+    driverClassName: com.mysql.cj.jdbc.Driver
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: create
+
