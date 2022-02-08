@@ -12,14 +12,14 @@ import com.legato.clentserver.bean.UserBean;
 @RestController
 @RequestMapping("config")
 public class ClientConfigController {
-	
+
 	@Autowired
 	private UserBean bean;
-	
-	@GetMapping
-	public ResponseEntity<Object> getPort(){
+
+	@GetMapping(path = "userdata")
+	public ResponseEntity<Object> getPort() {
 		System.out.println("Client application calling");
-		return ResponseEntity.status(HttpStatus.OK).body(bean.getPort());
+		return ResponseEntity.status(HttpStatus.OK).body("Name :" + bean.getName() + "Password :" + bean.getPassword());
 	}
 
 }
