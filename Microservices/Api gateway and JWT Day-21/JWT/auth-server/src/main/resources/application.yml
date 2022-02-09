@@ -1,0 +1,13 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: oauth-server
+    
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    
+signing:
+  key: simplekey

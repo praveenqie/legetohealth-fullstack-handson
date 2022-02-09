@@ -1,0 +1,22 @@
+server:
+  port: 9093
+spring:
+  application:
+    name: zuulapp
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+zuul:
+  ignored-services: "*"
+  prefix: /zuulapi
+  routes:
+    apigateway: /sb/**
+    firstapp: /fa/**
+    
